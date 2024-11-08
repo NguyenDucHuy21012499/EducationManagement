@@ -1,0 +1,143 @@
+﻿<Window x:Class="COURSE.MajorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:COURSE"
+        mc:Ignorable="d"
+        Height="525" Width="1200" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="333"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border CornerRadius="10,0,0,10" Grid.RowSpan="2" MouseDown="Border_MouseDown" Background="White">
+            <Grid>
+                <StackPanel VerticalAlignment="Top">
+                    <TextBlock Text="Major Management" Foreground="DeepPink" TextAlignment="Left" FontSize="26" FontWeight="Bold" Margin="50,50,0,15" />
+
+                    <Border BorderThickness="1" BorderBrush="DeepPink" Margin="50,0,25,15" CornerRadius="5">
+                        <Grid Margin="10 7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="MajorNameBlock" MouseDown="MajorNameText_MouseDown" Text="Major Name" Style="{StaticResource info_textHint}"/>
+                            <TextBox x:Name="MajorNameText" TextChanged="MajorNameText_TextChanged" Style="{StaticResource info_textBox}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border BorderThickness="1" BorderBrush="DeepPink" Margin="50,0,25,15" CornerRadius="5">
+                        <Grid Margin="10 7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="MajorCodeBlock" MouseDown="MajorCodeText_MouseDown" Text="Major Code" Style="{StaticResource info_textHint}"/>
+                            <TextBox x:Name="MajorCodeText" TextChanged="MajorCodeText_TextChanged" Style="{StaticResource info_textBox}"/>
+                        </Grid>
+                    </Border>
+                    
+                    <Border BorderThickness="1" BorderBrush="DeepPink" Margin="50,0,25,15" CornerRadius="5">
+                        <Grid Margin="10 7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="MajorYearBlock" MouseDown="MajorYearText_MouseDown" Text="Major Year" Style="{StaticResource info_textHint}"/>
+                            <TextBox x:Name="MajorYearText" TextChanged="MajorYearText_TextChanged" Style="{StaticResource info_textBox}"/>
+                        </Grid>
+                    </Border>
+                    <WrapPanel Margin="50,0,25,0">
+                        <Button Content="Add" Click="AddMajorButtonClick" Style="{StaticResource Button}" Width="75" Height="35" />
+                        <Button Content="Edit" Click="EditMajorButtonClick" Style="{StaticResource Button}" Width="75" Height="35" Margin="16,0,0,0"/>
+                        <Button Content="Delete" Click="DeleteMajorButtonClick" Style="{StaticResource Button}" Width="75"  Height="35" Margin="16,0,0,0"/>
+                    </WrapPanel>
+
+                    <Border BorderThickness="1" BorderBrush="DeepPink" Margin="50,25,25,15" CornerRadius="5">
+                        <Grid Margin="10 7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="SubjectCodeBlock" MouseDown="SubjectCodeText_MouseDown" Text="Subject Code" Style="{StaticResource info_textHint}"/>
+                            <TextBox x:Name="SubjectCodeText" TextChanged="SubjectCodeText_TextChanged" Style="{StaticResource info_textBox}"/>
+                        </Grid>
+                    </Border>
+
+                    <WrapPanel Margin="50,0,25,30" HorizontalAlignment="Center">
+                        <Button Content="Add Subject" Click="AddSubjectButtonClick" Style="{StaticResource Button}" Width="120" Margin="0,0,0,0" Height="35"/>
+                        <Button Content="Delete Subject" Click="DeleteSubjectButtonClick" Style="{StaticResource Button}" Width="120" Margin="18,0,0,0" Height="35"/>
+                    </WrapPanel>
+
+                    <ComboBox x:Name="CopyMajorCB" Width="255"  Height="25" FontSize="15" Foreground="DeepPink" Margin="25,0,0,15"
+                            DisplayMemberPath="MajorCode" 
+                            SelectedValuePath="MajorCode">
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ComboBoxItem}">
+                                <Setter Property="Foreground" Value="DeepPink"/>
+                            </Style>
+                        </ComboBox.ItemContainerStyle>
+                    </ComboBox>
+                    <Button Content="Copy Subject From Major Selected" Click="CopyMajorButtonClick" Style="{StaticResource Button}" Margin="50,0,25,0" Height="35"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border CornerRadius="0,10,10,0" MouseDown="Border_MouseDown" Background="White" Grid.Column="1">
+            <Grid>
+                <TextBlock Text="Major List" TextAlignment="Left" Foreground="DeepPink" FontSize="22" FontWeight="Bold" Margin="25,50,731,445" />
+                <TextBlock Text="Course List" TextAlignment="Left" Foreground="DeepPink" FontSize="22" FontWeight="Bold" Margin="450,50,193,445" />
+                <Button Content="Manage Block of Subject" Click="BlockWindowButtonClick" Style="{StaticResource Button}" Margin="217,45,450,445" Height="35"/>
+                <Button Content="X" Click="ExitButtonClick" Style="{StaticResource exitButton}" Margin="827,10,10,460">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+
+
+                <DataGrid IsReadOnly="True" Margin="25,100,450,25" x:Name="MajorGrid" AutoGenerateColumns="False" BorderBrush="DeepPink" SelectionChanged="MajorDataGrid_SelectionChanged">
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Foreground" Value="DeepPink"/>
+                        </Style>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Foreground" Value="DeepPink"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="200" Header="Major Name" Binding="{Binding MajorName}"/>
+                        <DataGridTextColumn Width="100" Header="Major Code" Binding="{Binding MajorCode}"/>
+                        <DataGridTextColumn Width="100" Header="Major Year" Binding="{Binding MajorYear}"/>
+                        <DataGridTextColumn Width="100" Header="Major Credit" Binding="{Binding MajorCredit}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <DataGrid IsReadOnly="True" Margin="450,100,55,25" x:Name="SubjectGrid" AutoGenerateColumns="False" BorderBrush="DeepPink" SelectionChanged="SubjectDataGrid_SelectionChanged" >
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Foreground" Value="DeepPink"/>
+                        </Style>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Foreground" Value="DeepPink"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="200" Header="Subject Name" Binding="{Binding SubjectName}"/>
+                        <DataGridTextColumn Width="100" Header="Subject Code" Binding="{Binding SubjectCode}" />
+                        <DataGridTextColumn Width="75" Header="Credits" Binding="{Binding Credits}" />
+                        <DataGridTextColumn Width="200" Header="Prerequisite Subject" Binding="{Binding PrerequisiteSubject}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

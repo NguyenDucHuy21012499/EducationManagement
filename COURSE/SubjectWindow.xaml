@@ -1,0 +1,105 @@
+﻿<Window x:Class="COURSE.SubjectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:COURSE"
+        mc:Ignorable="d"
+        Height="400" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="333"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border CornerRadius="10,0,0,10" Grid.RowSpan="2" MouseDown="Border_MouseDown" Background="White">
+            <Grid>
+                <StackPanel VerticalAlignment="Top">
+                    <TextBlock Text="Subject Management" Foreground="DeepPink" TextAlignment="Left" FontSize="26" FontWeight="Bold" Margin="50,50,0,15" />
+                    <Border BorderThickness="1" BorderBrush="DeepPink" Margin="50,0,25,20" CornerRadius="5">
+                        <Grid Margin="10 7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="SubjectNameBlock" MouseDown="SubjectNameText_MouseDown" Text="Subject Name" Style="{StaticResource info_textHint}"/>
+                            <TextBox x:Name="SubjectNameText" TextChanged="SubjectNameText_TextChanged" Style="{StaticResource info_textBox}"/>
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="DeepPink" Margin="50,0,25,20" CornerRadius="5">
+                        <Grid Margin="10 7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="SubjectCodeBlock" MouseDown="SubjectCodeText_MouseDown" Text="Subject Code" Style="{StaticResource info_textHint}"/>
+                            <TextBox x:Name="SubjectCodeText" TextChanged="SubjectCodeText_TextChanged" Style="{StaticResource info_textBox}"/>
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="DeepPink" Margin="50,0,25,20" CornerRadius="5">
+                        <Grid Margin="10 7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="CreditsBlock" MouseDown="CreditCodeText_MouseDown" Text="Credits" Style="{StaticResource info_textHint}"/>
+                            <TextBox x:Name="CreditsText" TextChanged="CreditCodeText_TextChanged" Style="{StaticResource info_textBox}"/>
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="DeepPink" Margin="50,0,25,0" CornerRadius="5">
+                        <Grid Margin="10 7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="PrerequisiteSubjectBlock" MouseDown="PrerequisiteSubjectText_MouseDown" Text="Prerequisite Subject" Style="{StaticResource info_textHint}"/>
+                            <TextBox x:Name="PrerequisiteSubjectText" TextChanged="PrerequisiteSubjectText_TextChanged" Style="{StaticResource info_textBox}"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+                <Button  Content="Add" Click="AddButtonClick" Style="{StaticResource Button}" Margin="50,325,215,25"/>
+                <Button  Content="Edit" Click="EditButtonClick" Style="{StaticResource Button}" Margin="140,325,120,25"/>
+                <Button  Content="Delete" Click="DeleteButtonClick" Style="{StaticResource Button}" Margin="235,325,25,25"/>
+            </Grid>
+        </Border>
+        <Border CornerRadius="0,10,10,0" MouseDown="Border_MouseDown" Background="White" HorizontalAlignment="Right" Width="667" Grid.Column="1">
+            <Grid>
+                <TextBlock Text="Search By" TextAlignment="Left" Foreground="DeepPink" FontSize="22" FontWeight="Bold" Margin="25,50,535,319" />
+                <Button  Content="Search" Click="SearchButtonClick" Style="{StaticResource Button}" Margin="542,50,50,320"/>
+                <Button  Content="X" Click="ExitButtonClick" Style="{StaticResource exitButton}" Margin="627,10,10,360"/>
+                <Border BorderThickness="1" BorderBrush="DeepPink" CornerRadius="5" Margin="150,50,333,320">
+                    <Grid Margin="1 1">
+                        <TextBox x:Name="SearchText" Style="{StaticResource info_textBox}" Margin="10,3,3,-1"/>
+                    </Grid>
+                </Border>
+                <ComboBox x:Name="SearchCB" HorizontalAlignment="Left"  Margin="350,52,0,0"  VerticalAlignment="Top"  Width="175"  Height="25" FontSize="15" Foreground="DeepPink">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="Foreground" Value="DeepPink"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                    <ComboBoxItem>SubjectCode</ComboBoxItem>
+                    <ComboBoxItem>SubjectName</ComboBoxItem>
+                    <ComboBoxItem>Credits</ComboBoxItem>
+                    <ComboBoxItem>PrerequisiteSubject</ComboBoxItem>
+                </ComboBox>
+                <DataGrid IsReadOnly="True" Margin="25,100,50,25" x:Name="SubjectGrid" AutoGenerateColumns="False" BorderBrush="DeepPink" SelectionChanged="SubjectDataGrid_SelectionChanged" >
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Foreground" Value="DeepPink"/>
+                        </Style>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Foreground" Value="DeepPink"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="200" Header="Subject Name" Binding="{Binding SubjectName}"/>
+                        <DataGridTextColumn Width="100" Header="Subject Code" Binding="{Binding SubjectCode}" />
+                        <DataGridTextColumn Width="75" Header="Credits" Binding="{Binding Credits}" />
+                        <DataGridTextColumn Width="200" Header="Prerequisite Subject" Binding="{Binding PrerequisiteSubject}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

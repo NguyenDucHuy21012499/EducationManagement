@@ -1,0 +1,12 @@
+C:\Users\PC\source\repos\COURSE\obj\Release\COURSE.csproj.AssemblyReference.cache
+C:\Users\PC\source\repos\COURSE\obj\Release\ClassWindow.g.cs
+C:\Users\PC\source\repos\COURSE\obj\Release\ForgotWindow.g.cs
+C:\Users\PC\source\repos\COURSE\obj\Release\MainWindow.g.cs
+C:\Users\PC\source\repos\COURSE\obj\Release\MajorWindow.g.cs
+C:\Users\PC\source\repos\COURSE\obj\Release\SemesterWindow.g.cs
+C:\Users\PC\source\repos\COURSE\obj\Release\SignWindow.g.cs
+C:\Users\PC\source\repos\COURSE\obj\Release\StartWindow.g.cs
+C:\Users\PC\source\repos\COURSE\obj\Release\SubjectWindow.g.cs
+C:\Users\PC\source\repos\COURSE\obj\Release\App.g.cs
+C:\Users\PC\source\repos\COURSE\obj\Release\COURSE_MarkupCompile.cache
+C:\Users\PC\source\repos\COURSE\obj\Release\COURSE_MarkupCompile.lref
